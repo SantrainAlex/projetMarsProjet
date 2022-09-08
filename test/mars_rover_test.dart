@@ -32,12 +32,12 @@ void main() {
     });
     test("Test vers quel direction le rover regarde (Sud)", () {
       Rover rover = Rover();
-      rover.move(Direction.Sud);
+      rover.direction = Direction.Sud;
       expect(rover.direction, Direction.Sud);
     });
     test("Test vers quel direction le rover regarde (Ouest)", () {
       Rover rover = Rover();
-      rover.move(Direction.Ouest);
+      rover.direction = Direction.Ouest;
       expect(rover.direction, Direction.Ouest);
     });
   });
@@ -51,7 +51,7 @@ void main() {
     test("Test de l'axe Y (Reculer)", () {
       Rover rover = Rover();
       rover.direction = Direction.Sud;
-      expect(rover.deplacementY(1), -1);
+      expect(rover.deplacementY(1), 10);
       expect(rover.positionX, 0);
     });
 
@@ -64,7 +64,7 @@ void main() {
     test("Test de l'axe X (Reculer)", () {
       Rover rover = Rover();
       rover.direction = Direction.Ouest;
-      expect(rover.deplacementX(1), -1);
+      expect(rover.deplacementX(1), 10);
       expect(rover.positionY, 0);
     });
   });

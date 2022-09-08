@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'direction.dart';
 
 class Rover {
@@ -17,28 +15,48 @@ class Rover {
       this.direction = Direction.Nord});
 
   int deplacementY(int value) {
-    if (this.direction == Direction.Nord) {
-      positionY = positionY + value;
-      return positionY;
-    } else if (this.direction == Direction.Sud) {
-      positionY = positionY - value;
-      return positionY;
+    if (direction == Direction.Nord) {
+      if ((positionY + value) > 10) {
+        int x = positionY + value;
+        positionY = (x % maxY) - 1;
+        return positionY;
+      } else {
+        positionY = positionY + value;
+        return positionY;
+      }
+    } else if (direction == Direction.Sud) {
+      if ((positionY - value) < 0) {
+        int x = positionY - value;
+        positionY = (x % maxY) + 1;
+        return positionY;
+      } else {
+        positionY = positionY - value;
+        return positionY;
+      }
     }
     return 0;
   }
 
   int deplacementX(int value) {
-    if (this.direction == Direction.Est) {
-      positionX = positionX + value;
-      return positionX;
-    } else if (this.direction == Direction.Ouest) {
-      positionX = positionX - value;
-      return positionX;
+    if (direction == Direction.Est) {
+      if ((positionX + value) > 10) {
+        int x = positionX + value;
+        positionX = (x % maxX) - 1;
+        return positionX;
+      } else {
+        positionX = positionX + value;
+        return positionX;
+      }
+    } else if (direction == Direction.Ouest) {
+      if ((positionX - value) < 0) {
+        int x = positionX - value;
+        positionX = (x % maxX) + 1;
+        return positionX;
+      } else {
+        positionX = positionX - value;
+        return positionX;
+      }
     }
     return 0;
-  }
-
-  move(Direction direction) {
-    this.direction = direction;
   }
 }
